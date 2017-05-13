@@ -1,5 +1,9 @@
-from django.http.response import JsonResponse
+from rest_framework.viewsets import ModelViewSet
+
+from .serializers import SubscriberSerializer
+from .models import Subscriber
 
 
-def hello_world(request):
-    return JsonResponse({"message": "hello world!"})
+class SubscriberViewSet(ModelViewSet):
+    serializer_class = SubscriberSerializer
+    queryset = Subscriber.objects.all()
